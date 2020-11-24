@@ -1,38 +1,33 @@
 # Meal-A-Day Backend
 ## How do we use our backend?
 Our backend is basically structured in the following manner:
-|- bin
-|   |- server.js
-|
-|- data
-|   |- DataStore.js
-|   |- account.json
-|   |- private.json
-|   |- public.json
-|   |- user.json
-|
-|- filters
-|   |- user.js
-|    
-|- middlewares
-|   |- auth.js
-|   |- modify_user_path.js
-|   |- parse_delete.js
-|   |- parse_get.js
-|   |- parse_post.js
-|   |- parse_utils.js
-|
-|- node_modules
-|- routes
-|   |- account.js
-|   |- index.js
-|   |- private.js
-|   |- public.js
-|   |- user.js
-|
-|- app.js
-|- package.json
-|- package-lock.json
+1. bin
+	1.1 server.js
+2. data
+	2.1 DataStore.js
+	2.2 account.json
+	2.3 private.json
+	2.4 public.json
+	2.5 user.json
+3. filters
+	3.1 user.js
+4.  middlewares
+	4.1 auth.js
+	4.2 modify_user_path.js
+	4.3 parse_delete.js
+	4.4 parse_get.js
+	4.5 parse_post.js
+	4.6 parse_utils.js
+5. node_modules
+6. routes
+	6.1 account.js
+	6.2 index.js
+	6.3 private.js
+	6.4 public.js
+	6.5 user.js
+7. app.js
+8. package.json
+9. package-lock.json
 
 Basically, our data folder stores all the data of profiles, recipes, etc. used in our app. The routes folder contains all js files used for rerounting with index.js being the root. Our middlewares folder contains everything that has to do with parsing. And our filter folder contains the functionn responsible for filtering. The names and folders in this project are reasonably self-explanatory. 
 
