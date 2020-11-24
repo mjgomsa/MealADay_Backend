@@ -1,6 +1,43 @@
 # Meal-A-Day Backend
-For the Meal-A-Day backend, we forked our TA Chris Burgess' Backend Template and altered it meet our app's needs. Below you will find the documentation of his backend:
+## How do we use our backend?
+Our backend is basically structured in the following manner:
+|- bin
+|   |- server.js
+|
+|- data
+|   |- DataStore.js
+|   |- account.json
+|   |- private.json
+|   |- public.json
+|   |- user.json
+|
+|- filters
+|   |- user.js
+|    
+|- middlewares
+|   |- auth.js
+|   |- modify_user_path.js
+|   |- parse_delete.js
+|   |- parse_get.js
+|   |- parse_post.js
+|   |- parse_utils.js
+|
+|- node_modules
+|- routes
+|   |- account.js
+|   |- index.js
+|   |- private.js
+|   |- public.js
+|   |- user.js
+|
+|- app.js
+|- package.json
+|- package-lock.json
 
+Basically, our data folder stores all the data of profiles, recipes, etc. used in our app. The routes folder contains all js files used for rerounting with index.js being the root. Our middlewares folder contains everything that has to do with parsing. And our filter folder contains the functionn responsible for filtering. The names and folders in this project are reasonably self-explanatory. 
+
+Note: For the Meal-A-Day backend, we forked our TA Chris Burgess' Backend Template and altered it meet our app's needs. Below you will find the documentation of his backend:
+===============================================
 ## Comp426 Backend Server
 
 This template is a simple out of the box solution for a backend server that uses [Express](https://www.npmjs.com/package/express) and [data-store](https://www.npmjs.com/package/data-store) to act as a somewhat "restful" API. You should fork this into your own repository so you can a team can work together using Git. 
