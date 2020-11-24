@@ -6,7 +6,6 @@
     "dev-live-reload": "cross-env DEBUG=server,auto-wire,auto-wire-warning,auto-data nodemon --ignore 'data/' -r esm bin/server.js",
     "dev-static": "cross-env DEBUG=server,auto-wire,auto-wire-warning,auto-data node -r esm bin/server.js",
     "prod": "cross-env DEBUG=server node -r esm bin/server.js"
-
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -25,6 +24,5 @@
     "morgan": "~1.9.1",
     "node": "^15.2.1",
     "nodemon": "^1.19.2"
-    
   }
 }
