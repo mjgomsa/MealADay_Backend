@@ -1,8 +1,11 @@
-# Comp426 Backend Server
+# Meal-A-Day Backend
+For the Meal-A-Day backend, we forked our TA Chris Burgess' Backend Template and altered it meet our app's needs. Below you will find the documentation of his backend:
+
+## Comp426 Backend Server
 
 This template is a simple out of the box solution for a backend server that uses [Express](https://www.npmjs.com/package/express) and [data-store](https://www.npmjs.com/package/data-store) to act as a somewhat "restful" API. You should fork this into your own repository so you can a team can work together using Git. 
 
-## Setup / Installation
+### Setup / Installation
 
 1. Obtain the code in whatever way you want. This could either be by cloning this repository, downloading a zip, or forking then cloning that new repository.
 2. Open a new shell in the root directory of the project.
@@ -19,9 +22,9 @@ npm run prod
 - *dev-static* runs the server with full logging but without quick reload.
 - *prod* runs the server with limited logging.
 
-## Structure
+### Structure
 
-### Data
+#### Data
 
 The server is separated into two main directories. The first thing to understand is how the data is stored.
 
@@ -33,7 +36,7 @@ For example, the `public.json` file holds all the data that is public to any use
 const {publicStore} = require('../data/DataStore');
 ```
 
-### Routes
+#### Routes
 Routes are a standard in the backend server world. They are how [express](https://www.npmjs.com/package/express) knows which code needs to be executed given a certain URI. Routes are automatically loaded when the server starts. If you wanted to make a new route that responds to requests at `/example/...` you would make a new file called `example.js` in the `/routes/` directory. This file could techincally be named anything. The code for that might look like this:
 
 
@@ -53,7 +56,7 @@ $ curl http://localhost:3000/example/hello
 ```
 
 
-## API
+### API
 The below details the out-of-the-box functionality of the server. It is encouraged to add custom routes if you wish to implement a more traditional API.
 
 By default, the server is separated into four separate routes: *account*, *public*, *private*, and *user*. The first of these that you will need to interact with are the `/account/` routes. These deal with creating new users, signing in, and verifying your current status.  The *public*, *private*, and *user* routes, on the other hand, are all simple object stores but with the following caveats.
@@ -65,7 +68,7 @@ By default, the server is separated into four separate routes: *account*, *publi
 
 We will first go over the routes that are related to *account* because they are in the format of a traditional API.
 
-### `/account/`
+#### `/account/`
 
 <details>
 	<summary><strong>POST <code>/create</code></strong></summary>
@@ -74,7 +77,7 @@ We will first go over the routes that are related to *account* because they are 
 - Body requires: `name`, `pass`
 - Body optional: `data` which can be anything.
 
-## example:
+### example:
 ```
 http://localhost:3000/account/create
 ```
@@ -113,7 +116,7 @@ Response:
 
 - Body requires: `name`, `pass`
 
-## example:
+### example:
 ```
 http://localhost:3000/account/login
 ```
@@ -144,7 +147,7 @@ Response:
 
 - Authorization header is required with a value of the JWT token that was generated for you on a successful login. The server is expecting a [bearer token](https://oauth.net/2/bearer-tokens/) with the JWT.
 
-## example:
+### example:
 ```
 http://localhost:3000/account/status
 ```
@@ -169,7 +172,7 @@ Response:
 
 Remember that the other routes that come with the out-of-the-box configuration are simple object stores. This quick walkthrough of using the API is only going to cover using the `/public/` endpoints. The same will apply for `/private/` and `/user/` as well. 
 
-### Post
+#### Post
 Let's start by adding some data to the `publicStore`. Whenever we want to add data to one of these object stores we are going to use the HTTP POST method. The body of the POST should always have a `data` key which is the JSON content you want to POST to a given route. 
 
 Let's add some authors to our public datastore.
@@ -223,7 +226,7 @@ http://localhost:3000/public/authors/Pierce Brown
   }
 }
 ```
-#### "type": "merge"
+##### "type": "merge"
 Now for the last step lets add "The Hobbit" to the list of books for Tolkien. You have probably realized that we will run into a problem. How can we append to the books array? One option is to make a GET request, add the book to the client side object, and make a new POST request with the modified data. The problem with this approach is that we find ourselves with a critical section problem. So we need to use the API method post as below with the **`type`** set to "merge":
 ```json
 http://localhost:3000/public/authors/Tolkien/books
@@ -254,11 +257,11 @@ The final `public.json` looks like the following:
   }
 }
 ```
-### Get
+#### Get
 
 Now let's explore the GET method for our simple object stores. The way GET works is each key at each level of the object in the JSON is used in the URI to access data. 
 
-#### To `/` or not to `/`
+##### To `/` or not to `/`
 
 When making GET requests to this backend API we had to make some decisions on how to represent the object-store. There are some instances where you want to retrieve an object and all its descendants, and for performance reasons, there are a lot of cases where you simply want the keys at a given level. To solve this problem you will see some funny notation that is not a standard in... anything.
 
@@ -310,7 +313,7 @@ http://localhost:3000/public/authors
 }
 ```
 
-### DELETE
+#### DELETE
 
 Delete requests are not special in any way. Simply specify the location of the object you want to delete. For example, if we want to delete Tolkien:
 
@@ -324,7 +327,7 @@ http://localhost:3000/public/authors/Tolkien
 }
 ```
 
-## Axios Demo
+### Axios Demo
 ```javascript
 import axios from 'axios';
 
